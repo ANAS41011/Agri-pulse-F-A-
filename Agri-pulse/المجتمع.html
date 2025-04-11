@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 مجتمع المزارعين المحترفين | شبكة التواصل الزراعي 🌱</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #2d6a4f;
+            --primary-hover: #245847;
+            --secondary-color: #4caf50;
+            --text-color: #333;
+            --light-gray: #f0f2f5;
+            --border-color: #ddd;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+        /* Header */
+        .header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        .header.scrolled {
+            box-shadow: var(--shadow-lg);
+            padding: 0.3rem 1rem;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        .search-bar {
+            flex-grow: 0.5;
+            max-width: 500px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 0.6rem 1.2rem 0.6rem 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: var(--light-gray);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .search-bar input:focus {
+            background-color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(45, 106, 79, 0.2);
+        }
+        .search-bar i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #65676b;
+        }
+        .nav-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        .nav-icon {
+            font-size: 1.25rem;
+            color: #65676b;
+            position: relative;
+            padding: 0.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-icon:hover {
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        .nav-icon.active {
+            color: var(--primary-color);
+            position: relative;
+        }
+        .nav-icon.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+        .notification-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #f02849;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 1rem auto;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        /* Left Sidebar */
+        .left-sidebar {
+            width: 25%;
+            position: sticky;
+            top: 70px;
+            height: fit-content;
+            transition: all 0.3s ease;
+        }
+        .sidebar-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .sidebar-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-menu li {
+            margin: 0.25rem 0;
+        }
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.75rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            transform: translateX(-5px);
+        }
+        .sidebar-menu a i {
+            width: 24px;
+            text-align: center;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+        }
+        .sidebar-menu a:hover i {
+            transform: scale(1.2);
+        }
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            width: 50%;
+            transition: all 0.3s ease;
+        }
+        .story-section {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            scrollbar-width: none;
+        }
+        .story-section::-webkit-scrollbar {
+            display: none;
+        }
+        .story {
+            min-width: 110px;
+            height: 200px;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        .story:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .story::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            border-radius: 10px;
+        }
+        .story-content {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            color: white;
+            z-index: 1;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .create-post {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .create-post:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+        .post-input {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .user-avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.3);
+        }
+        .post-input textarea {
+            flex-grow: 1;
+            border: none;
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            padding: 0.75rem 1rem;
+            resize: none;
+            width: 100%;
+            outline: none;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            min-height: 40px;
+            max-height: 100px;
+        }
+        .post-input textarea:focus {
+            background-color: white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+            padding-top: 0.75rem;
+        }
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .post-action:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+        }
+        .post {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+        .post-user {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .post-user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .post-user img:hover {
+            transform: scale(1.1);
+        }
+        .post-user-info h4 {
+            margin: 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .post-user-info h4:hover {
+            text-decoration: underline;
+            color: var(--primary-color);
+        }
+        .post-user-info p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: #65676b;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .post-content {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .post-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            max-height: 500px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .post-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .post-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #65676b;
+            font-size: 0.85rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .post-stats div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .post-stats div:hover {
+            text-decoration: underline;
+            color: var(--primary-color);
+        }
+        .post-actions-buttons {
+            display: flex;
+            justify-content: space-around;
+            padding: 0.25rem 0;
+        }
+        .post-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #65676b;
+            font-weight: 500;
+            font-size: 0.9rem;
+            flex-grow: 1;
+            justify-content: center;
+        }
+        .post-button:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+        }
+        .post-button i {
+            transition: all 0.2s ease;
+        }
+        .post-button:hover i {
+            transform: scale(1.2);
+        }
+        .post-button.liked {
+            color: var(--primary-color);
+        }
+        /* Right Sidebar */
+        .right-sidebar {
+            width: 25%;
+            position: sticky;
+            top: 70px;
+            height: fit-content;
+            transition: all 0.3s ease;
+        }
+        .sponsored-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .sponsored-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .sponsored-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            height: 120px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        .sponsored-card:hover img {
+            transform: scale(1.02);
+        }
+        .sponsored-card h4 {
+            margin: 0.25rem 0;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        .sponsored-card:hover h4 {
+            color: var(--primary-color);
+        }
+        .sponsored-card p {
+            margin: 0;
+            color: #65676b;
+            font-size: 0.8rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover {
+            background-color: var(--light-gray);
+            transform: translateX(-5px);
+        }
+        .contact-item img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover img {
+            transform: scale(1.1);
+        }
+        .contact-item span {
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .contact-item:hover span {
+            color: var(--primary-color);
+        }
+        .contact-item .status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #31a24c;
+            margin-left: auto;
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover .status {
+            transform: scale(1.3);
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalFadeIn 0.3s ease;
+            transform-origin: center;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-body {
+            padding: 1rem;
+        }
+        .close-modal {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #65676b;
+            transition: all 0.2s ease;
+        }
+        .close-modal:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+        /* Comment Section */
+        .comment-input {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .comment-input input {
+            flex-grow: 1;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .comment-input input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(45, 106, 79, 0.2);
+        }
+        .comment {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            animation: fadeIn 0.3s ease;
+        }
+        .comment-content {
+            background-color: var(--light-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 18px;
+            flex-grow: 1;
+            transition: all 0.2s ease;
+        }
+        .comment-content:hover {
+            background-color: #e5e7eb;
+        }
+        .comment-content h5 {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .comment-content h5:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        .comment-content p {
+            margin: 0.25rem 0 0 0;
+            font-size: 0.9rem;
+        }
+        /* Responsive */
+        @media (max-width: 992px) {
+            .left-sidebar, .right-sidebar {
+                display: none;
+            }
+            .main-content {
+                width: 100%;
+                padding: 0 1rem;
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
+            .search-bar {
+                display: none;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-icons .nav-icon span {
+                display: none;
+            }
+            .nav-icons .nav-icon {
+                padding: 0.5rem;
+            }
+            .post-actions-buttons .post-button span {
+                display: none;
+            }
+            .post-actions-buttons .post-button {
+                padding: 0.5rem;
+            }
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+        /* Enhanced Styles */
+        .interactive-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .interactive-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .interactive-btn i {
+            transition: all 0.2s ease;
+        }
+        .interactive-btn:hover i {
+            transform: scale(1.2);
+        }
+        .highlight-card {
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            border-radius: 15px;
+            box-shadow:  20px 20px 60px #d9d9d9,
+                        -20px -20px 60px #ffffff;
+            transition: all 0.3s ease;
+        }
+        .highlight-card:hover {
+            transform: scale(1.02);
+            box-shadow:  25px 25px 60px #d9d9d9,
+                        -25px -25px 60px #ffffff;
+        }
+        .custom-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .custom-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            z-index: 1;
+            right: 0;
+            top: 100%;
+            overflow: hidden;
+            animation: fadeIn 0.2s ease;
+        }
+        .custom-dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+        }
+        .custom-dropdown-content a:hover {
+            background-color: var(--light-gray);
+            transform: translateX(-5px);
+            color: var(--primary-color);
+        }
+        .custom-dropdown:hover .custom-dropdown-content {
+            display: block;
+        }
+        .animated-icon {
+            animation: spin 2s infinite linear;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.06);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+            40% {transform: translateY(-15px);} 
+            60% {transform: translateY(-7px);} 
+        }
+        .floating-btn:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            animation: none;
+        }
+        .floating-btn i {
+            transition: all 0.3s ease;
+        }
+        .floating-btn:hover i {
+            transform: rotate(90deg);
+        }
+        /* Loading Spinner */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin: 20px auto;
+        }
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            z-index: 1000;
+            animation: slideUp 0.3s ease, fadeOut 0.5s ease 2.5s forwards;
+            display: none;
+        }
+        @keyframes slideUp {
+            from { bottom: -50px; opacity: 0; }
+            to { bottom: 20px; opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        body.dark-mode .header,
+        body.dark-mode .sidebar-card,
+        body.dark-mode .create-post,
+        body.dark-mode .post,
+        body.dark-mode .sponsored-card,
+        body.dark-mode .modal-content {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        body.dark-mode .sidebar-menu a,
+        body.dark-mode .post-content,
+        body.dark-mode .post-user-info h4,
+        body.dark-mode .comment-content h5 {
+            color: #e0e0e0;
+        }
+        body.dark-mode .post-input textarea,
+        body.dark-mode .comment-content {
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+        }
+        body.dark-mode .post-button,
+        body.dark-mode .nav-icon {
+            color: #b0b0b0;
+        }
+        body.dark-mode .highlight-card {
+            background: linear-gradient(145deg, #1e1e1e, #2d2d2d);
+            box-shadow:  20px 20px 60px #121212,
+                        -20px -20px 60px #2a2a2a;
+        }
+        /* Live Stream Styles */
+        .live-stream-container {
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        #liveStream {
+            width: 100%;
+            background-color: #000;
+            display: none;
+        }
+        .stream-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            z-index: 10;
+        }
+        .stream-control-btn {
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .stream-control-btn:hover {
+            background-color: rgba(0,0,0,0.8);
+            transform: scale(1.1);
+        }
+        .stream-control-btn.end-call {
+            background-color: #f02849;
+        }
+        /* Camera Filters */
+        .filter-options {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+        .filter-option {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .filter-option:hover, .filter-option.active {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        .filter-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Voice Recorder */
+        .voice-recorder {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .voice-recorder-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .voice-recorder-btn:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.1);
+        }
+        .voice-recorder-btn.recording {
+            animation: pulse 1s infinite;
+            background-color: #f02849;
+        }
+        .voice-recorder-visualizer {
+            flex-grow: 1;
+            height: 20px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .voice-recorder-level {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            background-color: var(--primary-color);
+            transition: width 0.1s ease;
+        }
+        /* Marketplace */
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 1rem;
+        }
+        .product-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+        }
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 0.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .add-to-cart-btn:hover {
+            background-color: var(--primary-hover);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="header-container">
+            <!-- Logo -->
+            <div class="logo highlight-card" onclick="goToHome()">
+                <i class="fas fa-leaf animated-icon"></i>
+                <span>مجتمع المزارعين</span>
+            </div>
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="ابحث في مجتمع المزارعين..." id="searchInput">
+            </div>
+            <!-- Navigation Icons -->
+            <div class="nav-icons">
+                <div class="nav-icon active" title="الصفحة الرئيسية" onclick="goToHome()">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </div>
+                <div class="nav-icon" title="المجموعات" onclick="showGroups()">
+                    <i class="fas fa-users"></i>
+                    <span>المجموعات</span>
+                </div>
+                <div class="nav-icon" title="المتجر" onclick="showMarketplace()">
+                    <i class="fas fa-store"></i>
+                    <span>المتجر</span>
+                </div>
+                <div class="nav-icon" title="الرسائل" onclick="showMessages()">
+                    <i class="fas fa-envelope"></i>
+                    <div class="notification-badge" id="messageBadge">3</div>
+                    <span>الرسائل</span>
+                </div>
+                <div class="nav-icon" title="الإشعارات" onclick="showNotifications()">
+                    <i class="fas fa-bell"></i>
+                    <div class="notification-badge" id="notificationBadge">5</div>
+                    <span>الإشعارات</span>
+                </div>
+                <!-- Profile Dropdown -->
+                <div class="custom-dropdown">
+                    <div class="nav-icon">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-avatar" alt="Profile">
+                    </div>
+                    <div class="custom-dropdown-content">
+                        <a href="#" onclick="viewProfile()"><i class="fas fa-user"></i> الملف الشخصي</a>
+                        <a href="#" onclick="showSettings()"><i class="fas fa-cog"></i> الإعدادات</a>
+                        <a href="#" onclick="showHelp()"><i class="fas fa-question-circle"></i> المساعدة</a>
+                        <a href="#" onclick="logout()" style="color: #f02849;"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Left Sidebar -->
+        <aside class="left-sidebar">
+            <div class="sidebar-card highlight-card">
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#" class="active" onclick="viewProfile(event)">
+                            <i class="fas fa-user"></i>
+                            <span>ملفي الشخصي</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showFriends(event)">
+                            <i class="fas fa-users"></i>
+                            <span>الأصدقاء</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showEvents(event)">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>الأحداث</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showSaved(event)">
+                            <i class="fas fa-save"></i>
+                            <span>المحفوظات</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showPages(event)">
+                            <i class="fas fa-flag"></i>
+                            <span>الصفحات</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showGroups(event)">
+                            <i class="fas fa-users"></i>
+                            <span>المجموعات</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showMarketplace(event)">
+                            <i class="fas fa-store"></i>
+                            <span>المتجر</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-card highlight-card">
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">اختصاراتك</h3>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#" onclick="showShortcut(event, 'زراعة القمح')">
+                            <i class="fas fa-seedling"></i>
+                            <span>زراعة القمح</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showShortcut(event, 'آلات زراعية')">
+                            <i class="fas fa-tractor"></i>
+                            <span>آلات زراعية</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showShortcut(event, 'أشجار الفاكهة')">
+                            <i class="fas fa-apple-alt"></i>
+                            <span>أشجار الفاكهة</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showShortcut(event, 'الري الحديث')">
+                            <i class="fas fa-droplet"></i>
+                            <span>الري الحديث</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Stories -->
+            <div class="story-section">
+                <div class="story" style="background-image: url('https://source.unsplash.com/random/200x300/?farmer')" onclick="createStory()">
+                    <div class="story-content">
+                        <div style="border: 2px solid white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
+                            <i class="fas fa-plus" style="color: white; font-size: 0.8rem;"></i>
+                        </div>
+                        <span>إنشاء قصة</span>
+                    </div>
+                </div>
+                <div class="story" style="background-image: url('https://source.unsplash.com/random/200x300/?wheat,field')" onclick="viewStory('محمد أحمد')">
+                    <div class="story-content">محمد أحمد</div>
+                </div>
+                <div class="story" style="background-image: url('https://source.unsplash.com/random/200x300/?tractor,field')" onclick="viewStory('علي محمد')">
+                    <div class="story-content">علي محمد</div>
+                </div>
+                <div class="story" style="background-image: url('https://source.unsplash.com/random/200x300/?palm,date')" onclick="viewStory('مزرعة النخيل')">
+                    <div class="story-content">مزرعة النخيل</div>
+                </div>
+                <div class="story" style="background-image: url('https://source.unsplash.com/random/200x300/?irrigation,farm')" onclick="viewStory('الري الحديث')">
+                    <div class="story-content">الري الحديث</div>
+                </div>
+            </div>
+            <!-- Create Post -->
+            <div class="create-post highlight-card">
+                <div class="post-input">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-avatar" alt="User" onclick="viewProfile()">
+                    <textarea 
+                        id="postContent" 
+                        placeholder="ماذا تريد مشاركته مع مجتمع المزارعين؟ نصائح، أسئلة، خبرات..." 
+                        onclick="focusPostInput()"
+                    ></textarea>
+                </div>
+                <div class="post-actions">
+                    <button class="interactive-btn" onclick="startLiveStream()">
+                        <i class="fas fa-video"></i>
+                        <span>بث مباشر</span>
+                    </button>
+                    <button class="interactive-btn" onclick="openCamera()">
+                        <i class="fas fa-camera"></i>
+                        <span>الكاميرا</span>
+                    </button>
+                    <button class="interactive-btn" onclick="showFeelingActivity()">
+                        <i class="fas fa-smile"></i>
+                        <span>شعور/نشاط</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Live Stream Container (Hidden by default) -->
+            <div class="live-stream-container" id="liveStreamContainer" style="display: none;">
+                <video id="liveStream" autoplay></video>
+                <div class="stream-controls">
+                    <button class="stream-control-btn" onclick="toggleCamera()">
+                        <i class="fas fa-video"></i>
+                    </button>
+                    <button class="stream-control-btn" onclick="toggleMic()">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="stream-control-btn end-call" onclick="endLiveStream()">
+                        <i class="fas fa-phone-slash"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Camera Container (Hidden by default) -->
+            <div id="cameraContainer" style="display: none;">
+                <div class="live-stream-container">
+                    <video id="cameraPreview" autoplay></video>
+                    <div class="stream-controls">
+                        <button class="stream-control-btn" onclick="takePicture()">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button class="stream-control-btn" onclick="toggleCameraFilter()">
+                            <i class="fas fa-magic"></i>
+                        </button>
+                        <button class="stream-control-btn end-call" onclick="closeCamera()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Camera Filters -->
+                <div class="filter-options" id="filterOptions" style="display: none;">
+                    <div class="filter-option" onclick="applyFilter('normal')">
+                        <img src="https://source.unsplash.com/random/100x100/?farm" alt="Normal">
+                        <span>عادي</span>
+                    </div>
+                    <div class="filter-option" onclick="applyFilter('sepia')">
+                        <img src="https://source.unsplash.com/random/100x100/?wheat" alt="Sepia">
+                        <span>سيبيا</span>
+                    </div>
+                    <div class="filter-option" onclick="applyFilter('grayscale')">
+                        <img src="https://source.unsplash.com/random/100x100/?tractor" alt="Grayscale">
+                        <span>أبيض وأسود</span>
+                    </div>
+                    <div class="filter-option" onclick="applyFilter('hue-rotate')">
+                        <img src="https://source.unsplash.com/random/100x100/?harvest" alt="Hue Rotate">
+                        <span>ألوان</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Posts -->
+            <div id="posts-container">
+                <!-- Post 1 -->
+                <div class="post fade-in highlight-card">
+                    <div class="post-header">
+                        <div class="post-user">
+                            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="User" onclick="viewUserProfile('مزرعة النخيل')">
+                            <div class="post-user-info">
+                                <h4 onclick="viewUserProfile('مزرعة النخيل')">مزرعة النخيل</h4>
+                                <p>منذ ساعتين · <i class="fas fa-globe-americas"></i></p>
+                            </div>
+                        </div>
+                        <i class="fas fa-ellipsis-h" onclick="showPostOptions(this)"></i>
+                    </div>
+                    <div class="post-content">
+                        مرحبا بكم في مزرعة النخيل! اليوم نشارككم صور الحصاد الجديد من التمور الفاخرة. الجودة ممتازة هذا الموسم بفضل التقنيات الحديثة التي استخدمناها في الري والتسميد.
+                    </div>
+                    <img src="https://source.unsplash.com/random/600x400/?date,palm" class="post-image" alt="Post Image" onclick="viewImage('https://source.unsplash.com/random/600x400/?date,palm')">
+                    <div class="post-stats">
+                        <div onclick="showLikes('post1')">
+                            <i class="fas fa-thumbs-up"></i> <span id="post1-likes">42</span>
+                        </div>
+                        <div onclick="showComments('post1')">
+                            <span id="post1-comments-count">15 تعليق · 3 مشاركات</span>
+                        </div>
+                    </div>
+                    <div class="post-actions-buttons">
+                        <div class="post-button" id="post1-like" onclick="likePost('post1')">
+                            <i class="far fa-thumbs-up"></i>
+                            <span>إعجاب</span>
+                        </div>
+                        <div class="post-button" onclick="focusComment('post1')">
+                            <i class="far fa-comment"></i>
+                            <span>تعليق</span>
+                        </div>
+                        <div class="post-button" onclick="sharePost('post1')">
+                            <i class="fas fa-share"></i>
+                            <span>مشاركة</span>
+                        </div>
+                    </div>
+                    <!-- Comments Section -->
+                    <div class="comments-section" id="post1-comments" style="display: none; margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                        <div class="comment">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" class="user-avatar" alt="User" onclick="viewUserProfile('أحمد الفلاح')">
+                            <div class="comment-content">
+                                <h5 onclick="viewUserProfile('أحمد الفلاح')">أحمد الفلاح</h5>
+                                <p>التمور تبدو رائعة! ما نوع التسميد الذي استخدمتموه هذا الموسم؟</p>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <img src="https://randomuser.me/api/portraits/men/42.jpg" class="user-avatar" alt="User" onclick="viewUserProfile('مزرعة النخيل')">
+                            <div class="comment-content">
+                                <h5 onclick="viewUserProfile('مزرعة النخيل')">مزرعة النخيل</h5>
+                                <p>استخدمنا سماد عضوي مع إضافة بعض العناصر المعدنية حسب تحليل التربة</p>
+                            </div>
+                        </div>
+                        <div class="comment-input">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-avatar" alt="User">
+                            <input type="text" placeholder="اكتب تعليقاً..." id="post1-comment-input">
+                            <button class="interactive-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="addComment('post1')">نشر</button>
+                        </div>
+                        <!-- Voice Comment Option -->
+                        <div class="voice-recorder">
+                            <button class="voice-recorder-btn" id="voiceRecorderBtn1" onclick="toggleVoiceRecorder('post1')">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <div class="voice-recorder-visualizer">
+                                <div class="voice-recorder-level" id="voiceLevel1"></div>
+                            </div>
+                            <span id="recordingTime1" style="font-size: 0.8rem; color: #65676b;">00:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 2 -->
+                <div class="post fade-in highlight-card">
+                    <div class="post-header">
+                        <div class="post-user">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="User" onclick="viewUserProfile('أحمد الفلاح')">
+                            <div class="post-user-info">
+                                <h4 onclick="viewUserProfile('أحمد الفلاح')">أحمد الفلاح</h4>
+                                <p>منذ ٥ ساعات · <i class="fas fa-globe-americas"></i></p>
+                            </div>
+                        </div>
+                        <i class="fas fa-ellipsis-h" onclick="showPostOptions(this)"></i>
+                    </div>
+                    <div class="post-content">
+                        ما هي أفضل أنواع الأسمدة التي تنصحون بها لزراعة القمح في الأراضي الطينية؟ أريد تجربة شيء جديد هذا الموسم.
+                    </div>
+                    <div class="post-stats">
+                        <div onclick="showLikes('post2')">
+                            <i class="fas fa-thumbs-up"></i> <span id="post2-likes">28</span>
+                        </div>
+                        <div onclick="showComments('post2')">
+                            <span id="post2-comments-count">34 تعليق · 7 مشاركات</span>
+                        </div>
+                    </div>
+                    <div class="post-actions-buttons">
+                        <div class="post-button" id="post2-like" onclick="likePost('post2')">
+                            <i class="far fa-thumbs-up"></i>
+                            <span>إعجاب</span>
+                        </div>
+                        <div class="post-button" onclick="focusComment('post2')">
+                            <i class="far fa-comment"></i>
+                            <span>تعليق</span>
+                        </div>
+                        <div class="post-button" onclick="sharePost('post2')">
+                            <i class="fas fa-share"></i>
+                            <span>مشاركة</span>
+                        </div>
+                    </div>
+                    <!-- Comments Section -->
+                    <div class="comments-section" id="post2-comments" style="display: none; margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                        <div class="comment">
+                            <img src="https://randomuser.me/api/portraits/men/52.jpg" class="user-avatar" alt="User" onclick="viewUserProfile('خبير الزراعة')">
+                            <div class="comment-content">
+                                <h5 onclick="viewUserProfile('خبير الزراعة')">خبير الزراعة</h5>
+                                <p>أنصحك باستخدام الأسمدة العضوية المتحللة مع إضافة NPK بنسب 15-15-15</p>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="user-avatar" alt="User" onclick="viewUserProfile('مريم الزراعية')">
+                            <div class="comment-content">
+                                <h5 onclick="viewUserProfile('مريم الزراعية')">مريم الزراعية</h5>
+                                <p>جربت سماد الدواجن المتحلل وكانت نتائجه ممتازة في أرضي الطينية</p>
+                            </div>
+                        </div>
+                        <div class="comment-input">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-avatar" alt="User">
+                            <input type="text" placeholder="اكتب تعليقاً..." id="post2-comment-input">
+                            <button class="interactive-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="addComment('post2')">نشر</button>
+                        </div>
+                        <!-- Voice Comment Option -->
+                        <div class="voice-recorder">
+                            <button class="voice-recorder-btn" id="voiceRecorderBtn2" onclick="toggleVoiceRecorder('post2')">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <div class="voice-recorder-visualizer">
+                                <div class="voice-recorder-level" id="voiceLevel2"></div>
+                            </div>
+                            <span id="recordingTime2" style="font-size: 0.8rem; color: #65676b;">00:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 3 - Live Stream Example -->
+                <div class="post fade-in highlight-card">
+                    <div class="post-header">
+                        <div class="post-user">
+                            <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="User" onclick="viewUserProfile('جمعية المزارعين')">
+                            <div class="post-user-info">
+                                <h4 onclick="viewUserProfile('جمعية المزارعين')">جمعية المزارعين</h4>
+                                <p>بث مباشر الآن · <i class="fas fa-circle" style="color: #f02849; font-size: 0.6rem;"></i></p>
+                            </div>
+                        </div>
+                        <i class="fas fa-ellipsis-h" onclick="showPostOptions(this)"></i>
+                    </div>
+                    <div class="post-content">
+                        بث مباشر: ندوة عن أحدث تقنيات الزراعة الذكية مع المهندس الزراعي علي محمد
+                    </div>
+                    <div class="live-stream-container" style="height: 400px; background-color: #000; display: flex; align-items: center; justify-content: center; color: white; flex-direction: column;">
+                        <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <p>جاري تحميل البث المباشر...</p>
+                        <button class="interactive-btn" style="margin-top: 1rem;" onclick="joinLiveStream()">
+                            <i class="fas fa-play"></i>
+                            <span>انضم إلى البث</span>
+                        </button>
+                    </div>
+                    <div class="post-stats">
+                        <div>
+                            <i class="fas fa-eye"></i> <span>245 مشاهد</span>
+                        </div>
+                        <div>
+                            <span>187 تعليق</span>
+                        </div>
+                    </div>
+                    <div class="post-actions-buttons">
+                        <div class="post-button">
+                            <i class="far fa-heart"></i>
+                            <span>إعجاب</span>
+                        </div>
+                        <div class="post-button" onclick="focusComment('post3')">
+                            <i class="far fa-comment"></i>
+                            <span>تعليق</span>
+                        </div>
+                        <div class="post-button">
+                            <i class="fas fa-share"></i>
+                            <span>مشاركة</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 4 - Marketplace Example -->
+                <div class="post fade-in highlight-card">
+                    <div class="post-header">
+                        <div class="post-user">
+                            <img src="https://randomuser.me/api/portraits/men/72.jpg" alt="User" onclick="viewUserProfile('متجر الزراعيين')">
+                            <div class="post-user-info">
+                                <h4 onclick="viewUserProfile('متجر الزراعيين')">متجر الزراعيين</h4>
+                                <p>منذ 3 أيام · <i class="fas fa-store"></i></p>
+                            </div>
+                        </div>
+                        <i class="fas fa-ellipsis-h" onclick="showPostOptions(this)"></i>
+                    </div>
+                    <div class="post-content">
+                        عرض خاص على سماد NPK 19-19-19 عالي الجودة بسعر 850 جنيه للكيس 25 كجم. العرض ساري حتى نهاية الأسبوع!
+                    </div>
+                    <div class="product-card">
+                        <img src="https://source.unsplash.com/random/600x400/?fertilizer" class="product-image" alt="سماد NPK">
+                        <div class="product-info">
+                            <h4>سماد NPK 19-19-19</h4>
+                            <p>سماد مركب عالي الجودة لجميع المحاصيل</p>
+                            <div class="product-price">850 ج.م</div>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(24 تقييم)</span>
+                            </div>
+                            <button class="add-to-cart-btn" onclick="addToCart('سماد NPK')">
+                                <i class="fas fa-cart-plus"></i>
+                                أضف إلى السلة
+                            </button>
+                        </div>
+                    </div>
+                    <div class="post-stats">
+                        <div>
+                            <i class="fas fa-eye"></i> <span>124 مشاهدة</span>
+                        </div>
+                        <div>
+                            <span>18 تعليق</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Right Sidebar -->
+        <aside class="right-sidebar">
+            <div class="sidebar-card highlight-card">
+                <h3 style="margin-bottom: 1rem;">إعلانات ممولة</h3>
+                <div class="sponsored-card" onclick="viewSponsored('جرارات حديثة')">
+                    <img src="Ha8d80ab59b91484cb8a759cd9dc800638.jpg_720x720q50.avif" alt="جرارات حديثة">
+                    <h4>جرارات حديثة بأسعار تنافسية</h4>
+                    <p>عروض خاصة لفترة محدودة - شروط وأحكام</p>
+                </div>
+                <div class="sponsored-card" onclick="viewSponsored('أسمدة عضوية')">
+                    <img src="hqdefault.jpg" alt="أسمدة عضوية">
+                    <h4>أسمدة عضوية بجودة عالية</h4>
+                    <p>توصيل مجاني للكميات الكبيرة</p>
+                </div>
+            </div>
+
+            <div class="sidebar-card highlight-card">
+                <h3 style="margin-bottom: 1rem;">المتواجدون الآن</h3>
+                <div class="contact-item" onclick="startChat('محمود الزراعي')">
+                    <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="محمود الزراعي">
+                    <span>محمود الزراعي</span>
+                    <div class="status"></div>
+                </div>
+                <div class="contact-item" onclick="startChat('سارة المزارعة')">
+                    <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="سارة المزارعة">
+                    <span>سارة المزارعة</span>
+                    <div class="status"></div>
+                </div>
+                <div class="contact-item" onclick="startChat('مزرعة الأجيال')">
+                    <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="مزرعة الأجيال">
+                    <span>مزرعة الأجيال</span>
+                    <div class="status"></div>
+                </div>
+                <div class="contact-item" onclick="startChat('أحمد الخبير')">
+                    <img src="https://randomuser.me/api/portraits/men/72.jpg" alt="أحمد الخبير">
+                    <span>أحمد الخبير</span>
+                    <div class="status"></div>
+                </div>
+            </div>
+            
+            <!-- Marketplace Section -->
+            <div class="sidebar-card highlight-card">
+                <h3 style="margin-bottom: 1rem;">منتجات مميزة</h3>
+                <div class="product-card">
+                    <img src="images (1).jpg" class="product-image" alt="بذور قمح">
+                    <div class="product-info">
+                        <h4>بذور قمح عالي الجودة</h4>
+                        <div class="product-price">120 ج.م/كجم</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('بذور قمح')">
+                            <i class="fas fa-cart-plus"></i>
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="896c3187d91f4a7bb849818d13.jpg@watermark=2&text=YXIuaHQtYmF1ZXIuY29t&t=75&color=I0ZGRkZGRg==&s=20&size=33&p=9_95Q.webp" class="product-image" alt="رشاش زراعي">
+                    <div class="product-info">
+                        <h4>رشاش زراعي 20 لتر</h4>
+                        <div class="product-price">650 ج.م</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('رشاش زراعي')">
+                            <i class="fas fa-cart-plus"></i>
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Floating Button -->
+    <button class="floating-btn" onclick="createPost()">
+        <i class="fas fa-pen"></i>
+    </button>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toastNotification"></div>
+
+    <!-- Modals -->
+    <!-- Post Options Modal -->
+    <div class="modal" id="postOptionsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>خيارات المنشور</h3>
+                <span class="close-modal" onclick="closeModal('postOptionsModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="sidebar-menu">
+                    <a href="#" onclick="savePost()"><i class="fas fa-save"></i> حفظ المنشور</a>
+                    <a href="#" onclick="hidePost()"><i class="fas fa-eye-slash"></i> إخفاء المنشور</a>
+                    <a href="#" onclick="reportPost()" style="color: #f02849;"><i class="fas fa-flag"></i> الإبلاغ عن المنشور</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image View Modal -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content" style="max-width: 90%; max-height: 90%;">
+            <div class="modal-header">
+                <span class="close-modal" onclick="closeModal('imageModal')">&times;</span>
+            </div>
+            <div class="modal-body" style="text-align: center; padding: 0;">
+                <img src="" id="modalImage" style="max-width: 100%; max-height: 80vh; border-radius: 0 0 8px 8px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div class="modal" id="createPostModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>إنشاء منشور جديد</h3>
+                <span class="close-modal" onclick="closeModal('createPostModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="post-input">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-avatar" alt="User">
+                    <textarea placeholder="ماذا تريد مشاركته مع مجتمع المزارعين؟"></textarea>
+                </div>
+                <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <button class="interactive-btn" onclick="addPhotoToPost()"><i class="fas fa-image"></i> إضافة صورة</button>
+                    <button class="interactive-btn" onclick="addVideoToPost()"><i class="fas fa-video"></i> إضافة فيديو</button>
+                    <button class="interactive-btn" onclick="addFeelingToPost()"><i class="fas fa-smile"></i> إضافة شعور</button>
+                </div>
+                <div style="margin-top: 1rem; text-align: left;">
+                    <button class="interactive-btn" style="width: 100%;" onclick="publishPost()">نشر</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>سلة التسوق</h3>
+                <span class="close-modal" onclick="closeModal('cartModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems">
+                    <!-- Cart items will be added here dynamically -->
+                    <p style="text-align: center; color: #65676b;">سلة التسوق فارغة</p>
+                </div>
+                <div style="border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <span>الإجمالي:</span>
+                        <span id="cartTotal">0 ج.م</span>
+                    </div>
+                    <button class="interactive-btn" style="width: 100%;" onclick="checkout()">
+                        <i class="fas fa-shopping-cart"></i>
+                        اتمام الشراء
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="modal" id="loadingModal" style="background-color: rgba(0,0,0,0.7);">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        // Basic Functions
+        function goToHome() {
+            showToast("انتقال إلى الصفحة الرئيسية");
+            document.querySelectorAll('.nav-icon').forEach(icon => {
+                icon.classList.remove('active');
+            });
+            document.querySelector('.nav-icon:nth-child(1)').classList.add('active');
+        }
+
+        function viewProfile() {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                showToast("عرض الملف الشخصي");
+            }, 1000);
+        }
+
+        function showGroups() {
+            showToast("عرض المجموعات");
+            document.querySelectorAll('.nav-icon').forEach(icon => {
+                icon.classList.remove('active');
+            });
+            document.querySelector('.nav-icon:nth-child(2)').classList.add('active');
+        }
+
+        function showMarketplace() {
+            showToast("عرض المتجر");
+            document.querySelectorAll('.nav-icon').forEach(icon => {
+                icon.classList.remove('active');
+            });
+            document.querySelector('.nav-icon:nth-child(3)').classList.add('active');
+        }
+
+        function showMessages() {
+            showToast("عرض الرسائل");
+            document.querySelectorAll('.nav-icon').forEach(icon => {
+                icon.classList.remove('active');
+            });
+            document.querySelector('.nav-icon:nth-child(4)').classList.add('active');
+            document.getElementById('messageBadge').style.display = 'none';
+        }
+
+        function showNotifications() {
+            showToast("عرض الإشعارات");
+            document.querySelectorAll('.nav-icon').forEach(icon => {
+                icon.classList.remove('active');
+            });
+            document.querySelector('.nav-icon:nth-child(5)').classList.add('active');
+            document.getElementById('notificationBadge').style.display = 'none';
+        }
+
+        function showSettings() {
+            showToast("عرض الإعدادات");
+            closeModal('postOptionsModal');
+        }
+
+        function showHelp() {
+            showToast("عرض المساعدة");
+            closeModal('postOptionsModal');
+        }
+
+        function logout() {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                showToast("تم تسجيل الخروج بنجاح");
+                
+            }, 1500);
+        }
+
+        function viewUserProfile(username) {
+            showToast("عرض ملف " + username);
+        }
+
+        function createStory() {
+            showToast("إنشاء قصة جديدة");
+        }
+
+        function viewStory(username) {
+            showToast("عرض قصة " + username);
+        }
+
+        function focusPostInput() {
+            document.getElementById('postContent').focus();
+        }
+
+        function showFeelingActivity() {
+            showToast("اختيار شعور/نشاط");
+        }
+
+        function showPostOptions(element) {
+            document.getElementById('postOptionsModal').style.display = 'flex';
+            event.stopPropagation();
+        }
+
+        function viewImage(url) {
+            document.getElementById('modalImage').src = url;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        function createPost() {
+            document.getElementById('createPostModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function savePost() {
+            showToast("تم حفظ المنشور");
+            closeModal('postOptionsModal');
+        }
+
+        function hidePost() {
+            showToast("تم إخفاء المنشور");
+            closeModal('postOptionsModal');
+        }
+
+        function reportPost() {
+            showToast("تم الإبلاغ عن المنشور");
+            closeModal('postOptionsModal');
+        }
+
+        function addPhotoToPost() {
+            showToast("إضافة صورة إلى المنشور");
+        }
+
+        function addVideoToPost() {
+            showToast("إضافة فيديو إلى المنشور");
+        }
+
+        function addFeelingToPost() {
+            showToast("إضافة شعور إلى المنشور");
+        }
+
+        function publishPost() {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                showToast("تم نشر المنشور بنجاح");
+                closeModal('createPostModal');
+            }, 2000);
+        }
+
+        // Live Stream Functions
+        let stream;
+        let isCameraOn = true;
+        let isMicOn = true;
+
+        async function startLiveStream() {
+            try {
+                showLoading();
+                stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                const liveStream = document.getElementById('liveStream');
+                liveStream.srcObject = stream;
+                
+                document.getElementById('liveStreamContainer').style.display = 'block';
+                document.getElementById('cameraContainer').style.display = 'none';
+                
+                hideLoading();
+                showToast("بدأ البث المباشر بنجاح");
+            } catch (err) {
+                hideLoading();
+                showToast("خطأ: " + err.message);
+            }
+        }
+
+        function endLiveStream() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            document.getElementById('liveStreamContainer').style.display = 'none';
+            showToast("تم إنهاء البث المباشر");
+        }
+
+        function toggleCamera() {
+            if (stream) {
+                const videoTrack = stream.getVideoTracks()[0];
+                videoTrack.enabled = !videoTrack.enabled;
+                isCameraOn = videoTrack.enabled;
+                showToast(isCameraOn ? "تم تشغيل الكاميرا" : "تم إيقاف الكاميرا");
+            }
+        }
+
+        function toggleMic() {
+            if (stream) {
+                const audioTrack = stream.getAudioTracks()[0];
+                audioTrack.enabled = !audioTrack.enabled;
+                isMicOn = audioTrack.enabled;
+                showToast(isMicOn ? "تم تشغيل الميكروفون" : "تم إيقاف الميكروفون");
+            }
+        }
+
+        function joinLiveStream() {
+            showToast("جار الانضمام إلى البث المباشر...");
+        }
+
+        // Camera Functions
+        let cameraStream;
+        let currentFilter = 'normal';
+
+        async function openCamera() {
+            try {
+                showLoading();
+                cameraStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const cameraPreview = document.getElementById('cameraPreview');
+                cameraPreview.srcObject = cameraStream;
+                
+                document.getElementById('cameraContainer').style.display = 'block';
+                document.getElementById('liveStreamContainer').style.display = 'none';
+                
+                hideLoading();
+                showToast("تم تشغيل الكاميرا");
+            } catch (err) {
+                hideLoading();
+                showToast("خطأ: " + err.message);
+            }
+        }
+
+        function closeCamera() {
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+            }
+            document.getElementById('cameraContainer').style.display = 'none';
+            document.getElementById('filterOptions').style.display = 'none';
+            showToast("تم إغلاق الكاميرا");
+        }
+
+        function takePicture() {
+            const canvas = document.createElement('canvas');
+            const cameraPreview = document.getElementById('cameraPreview');
+            canvas.width = cameraPreview.videoWidth;
+            canvas.height = cameraPreview.videoHeight;
+            const ctx = canvas.getContext('2d');
+            
+            // Apply filter before drawing
+            switch(currentFilter) {
+                case 'sepia':
+                    ctx.filter = 'sepia(100%)';
+                    break;
+                case 'grayscale':
+                    ctx.filter = 'grayscale(100%)';
+                    break;
+                case 'hue-rotate':
+                    ctx.filter = 'hue-rotate(90deg)';
+                    break;
+                default:
+                    ctx.filter = 'none';
+            }
+            
+            ctx.drawImage(cameraPreview, 0, 0, canvas.width, canvas.height);
+            
+            // Create image from canvas
+            const img = new Image();
+            img.src = canvas.toDataURL('');
+            
+            // Show the captured image
+            viewImage(img.src);
+            showToast("تم التقاط الصورة");
+        }
+
+        function toggleCameraFilter() {
+            const filterOptions = document.getElementById('filterOptions');
+            filterOptions.style.display = filterOptions.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        function applyFilter(filter) {
+            currentFilter = filter;
+            const cameraPreview = document.getElementById('cameraPreview');
+            
+            switch(filter) {
+                case 'sepia':
+                    cameraPreview.style.filter = 'sepia(100%)';
+                    break;
+                case 'grayscale':
+                    cameraPreview.style.filter = 'grayscale(100%)';
+                    break;
+                case 'hue-rotate':
+                    cameraPreview.style.filter = 'hue-rotate(90deg)';
+                    break;
+                default:
+                    cameraPreview.style.filter = 'none';
+            }
+            
+            showToast("تم تطبيق الفلتر: " + filter);
+        }
+
+        // Voice Recorder Functions
+        let mediaRecorder;
+        let audioChunks = [];
+        let recordingInterval;
+        let recordingSeconds = 0;
+
+        function toggleVoiceRecorder(postId) {
+            const btn = document.getElementById('voiceRecorderBtn' + postId.slice(-1));
+            
+            if (btn.classList.contains('recording')) {
+                // Stop recording
+                btn.classList.remove('recording');
+                mediaRecorder.stop();
+                clearInterval(recordingInterval);
+                document.getElementById('recordingTime' + postId.slice(-1)).textContent = "00:00";
+                showToast("تم إيقاف التسجيل");
+            } else {
+                // Start recording
+                btn.classList.add('recording');
+                startRecording(postId);
+            }
+        }
+
+        async function startRecording(postId) {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+                
+                mediaRecorder.ondataavailable = event => {
+                    audioChunks.push(event.data);
+                };
+                
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    
+                    // Create audio player for the recorded comment
+                    const audioPlayer = document.createElement('audio');
+                    audioPlayer.controls = true;
+                    audioPlayer.src = audioUrl;
+                    
+                    // Add the audio comment to the post
+                    const comment = document.createElement('div');
+                    comment.className = 'comment';
+                    comment.innerHTML = `
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-avatar" alt="User">
+                        <div class="comment-content">
+                            <h5>أنت</h5>
+                            <div style="margin-top: 0.25rem;"></div>
+                        </div>
+                    `;
+                    comment.querySelector('.comment-content div').appendChild(audioPlayer);
+                    
+                    const commentsSection = document.getElementById(postId + '-comments');
+                    commentsSection.insertBefore(comment, commentsSection.children[commentsSection.children.length - 2]);
+                };
+                
+                mediaRecorder.start();
+                
+                // Start timer
+                recordingSeconds = 0;
+                recordingInterval = setInterval(() => {
+                    recordingSeconds++;
+                    const minutes = Math.floor(recordingSeconds / 60).toString().padStart(2, '0');
+                    const seconds = (recordingSeconds % 60).toString().padStart(2, '0');
+                    document.getElementById('recordingTime' + postId.slice(-1)).textContent = `${minutes}:${seconds}`;
+                    
+                    // Simulate voice level
+                    const voiceLevel = document.getElementById('voiceLevel' + postId.slice(-1));
+                    voiceLevel.style.width = Math.random() * 80 + 10 + '%';
+                }, 1000);
+                
+                showToast("بدأ التسجيل الصوتي");
+            } catch (err) {
+                showToast("خطأ: " + err.message);
+            }
+        }
+
+        // Post Interaction Functions
+        function likePost(postId) {
+            const likeButton = document.getElementById(postId + '-like');
+            const likeIcon = likeButton.querySelector('i');
+            const likeCount = document.getElementById(postId + '-likes');
+            
+            if (likeButton.classList.contains('liked')) {
+                likeButton.classList.remove('liked');
+                likeIcon.classList.replace('fas', 'far');
+                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            } else {
+                likeButton.classList.add('liked');
+                likeIcon.classList.replace('far', 'fas');
+                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+                animateLike(likeButton);
+            }
+        }
+
+        function animateLike(element) {
+            element.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        function showComments(postId) {
+            const commentsSection = document.getElementById(postId + '-comments');
+            if (commentsSection.style.display === 'none' || !commentsSection.style.display) {
+                commentsSection.style.display = 'block';
+                commentsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                commentsSection.style.display = 'none';
+            }
+        }
+
+        function focusComment(postId) {
+            const commentsSection = document.getElementById(postId + '-comments');
+            const commentInput = document.getElementById(postId + '-comment-input');
+            
+            if (commentsSection.style.display === 'none' || !commentsSection.style.display) {
+                commentsSection.style.display = 'block';
+            }
+            
+            setTimeout(() => {
+                commentInput.focus();
+                commentsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        function addComment(postId) {
+            const commentInput = document.getElementById(postId + '-comment-input');
+            const commentsSection = document.getElementById(postId + '-comments');
+            const commentCount = document.getElementById(postId + '-comments-count');
+            
+            if (commentInput.value.trim() === '') return;
+            
+            // Create new comment
+            const newComment = document.createElement('div');
+            newComment.className = 'comment';
+            newComment.innerHTML = `
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-avatar" alt="User">
+                <div class="comment-content">
+                    <h5>أنت</h5>
+                    <p>${commentInput.value}</p>
+                </div>
+            `;
+            
+            // Insert before the input
+            commentsSection.insertBefore(newComment, commentsSection.lastElementChild);
+            
+            // Update comment count
+            const currentCount = parseInt(commentCount.textContent.split(' ')[0]);
+            commentCount.textContent = (currentCount + 1) + ' تعليق · ' + commentCount.textContent.split('·')[1];
+            
+            // Clear input
+            commentInput.value = '';
+            
+            // Animate
+            newComment.style.opacity = '0';
+            newComment.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                newComment.style.opacity = '1';
+                newComment.style.transform = 'translateY(0)';
+            }, 10);
+        }
+
+        function sharePost(postId) {
+            showToast("مشاركة المنشور " + postId);
+        }
+
+        function showLikes(postId) {
+            showToast("عرض الإعجابات على المنشور " + postId);
+        }
+
+        function showShortcut(event, name) {
+            event.preventDefault();
+            showToast("عرض اختصار " + name);
+        }
+
+        function showFriends(event) {
+            event.preventDefault();
+            showToast("عرض قائمة الأصدقاء");
+        }
+
+        function showEvents(event) {
+            event.preventDefault();
+            showToast("عرض الأحداث القادمة");
+        }
+
+        function showSaved(event) {
+            event.preventDefault();
+            showToast("عرض المحفوظات");
+        }
+
+        function showPages(event) {
+            event.preventDefault();
+            showToast("عرض الصفحات");
+        }
+
+        function viewSponsored(name) {
+            showToast("عرض الإعلان " + name);
+        }
+
+        function startChat(name) {
+            showToast("بدء محادثة مع " + name);
+        }
+
+        // Marketplace Functions
+        let cartItems = [];
+        let cartTotal = 0;
+
+        function addToCart(productName) {
+            // In a real app, you would add the actual product with all details
+            cartItems.push({
+                name: productName,
+                price: Math.floor(Math.random() * 500) + 100 // Random price for demo
+            });
+            
+            // Update cart total
+            cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
+            
+            showToast(`${productName} تمت إضافته إلى السلة`);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: #65676b;">سلة التسوق فارغة</p>';
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cartItems.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.style.display = 'flex';
+                    itemElement.style.justifyContent = 'space-between';
+                    itemElement.style.padding = '0.5rem 0';
+                    itemElement.style.borderBottom = '1px solid var(--border-color)';
+                    
+                    itemElement.innerHTML = `
+                        <div>
+                            <h4 style="margin: 0; font-size: 0.9rem;">${item.name}</h4>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--primary-color);">${item.price} ج.م</p>
+                        </div>
+                        <button onclick="removeCartItem(${index})" style="background: none; border: none; color: #f02849; cursor: pointer;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    `;
+                    
+                    cartItemsContainer.appendChild(itemElement);
+                });
+            }
+            
+            document.getElementById('cartTotal').textContent = cartTotal + ' ج.م';
+        }
+
+        function removeCartItem(index) {
+            cartItems.splice(index, 1);
+            cartTotal = cartItems.reduce((total, item) => total + item.price, 0);
+            updateCartUI();
+            showToast("تمت إزالة المنتج من السلة");
+        }
+
+        function checkout() {
+            if (cartItems.length === 0) {
+                showToast("سلة التسوق فارغة");
+                return;
+            }
+            
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                cartItems = [];
+                cartTotal = 0;
+                updateCartUI();
+                closeModal('cartModal');
+                showToast("تم اتمام الشراء بنجاح! شكراً لثقتك بنا");
+            }, 2000);
+        }
+
+        // Utility Functions
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        function showLoading() {
+            document.getElementById('loadingModal').style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingModal').style.display = 'none';
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const darkModeToggle = document.querySelector('.dark-mode-toggle i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                darkModeToggle.classList.replace('fa-moon', 'fa-sun');
+                showToast("تم تفعيل الوضع الليلي");
+            } else {
+                darkModeToggle.classList.replace('fa-sun', 'fa-moon');
+                showToast("تم تعطيل الوضع الليلي");
+            }
+        }
+
+        // Scroll Event for Header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Click outside to close modals
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        });
+
+        // Keyboard events
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to stories on load
+            const stories = document.querySelectorAll('.story');
+            stories.forEach((story, index) => {
+                setTimeout(() => {
+                    story.style.opacity = '1';
+                    story.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+                 });
+        
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 مجتمع المزارعين المحترفين | شبكة التواصل الزراعي 🌱</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <style>
+        /* جميع أنماط CSS السابقة تبقى كما هي */
+        /* نضيف فقط أنماط إضافية للمتجر */
+        
+        .marketplace-section {
+            display: none; /* مخفي بشكل افتراضي */
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            margin-bottom: 1rem;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header يبقى كما هو -->
+    
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Left Sidebar يبقى كما هو -->
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- قسم المنشورات (الافتراضي) -->
+            <div id="posts-container">
+                <!-- جميع المنشورات تبقى كما هي -->
+            </div>
+            
+            <!-- قسم المتجر -->
+            <div id="marketplace-section" class="marketplace-section">
+                <div class="create-post highlight-card">
+                    <h3>متجر المزارعين</h3>
+                    <p>تصفح أحدث المنتجات الزراعية والمعدات</p>
+                    
+                    <div class="category-filter">
+                        <div class="category-btn active" onclick="filterProducts('all')">الكل</div>
+                        <div class="category-btn" onclick="filterProducts('seeds')">البذور</div>
+                        <div class="category-btn" onclick="filterProducts('tools')">الأدوات</div>
+                        <div class="category-btn" onclick="filterProducts('fertilizers')">الأسمدة</div>
+                        <div class="category-btn" onclick="filterProducts('machines')">الآلات</div>
+                    </div>
+                    
+                    <div class="product-grid" id="product-grid">
+                        <!-- سيتم ملؤها بالمنتجات ديناميكياً -->
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Right Sidebar يبقى كما هو -->
+    </div>
+
+    <!-- باقي العناصر تبقى كما هي -->
+
+    <script>
+        // بيانات المنتجات
+        const products = [
+            {
+                id: 1,
+                name: "بذور قمح عالي الجودة",
+                price: 120,
+                category: "seeds",
+                image: "https://source.unsplash.com/random/300x200/?wheat,seed"
+            },
+            {
+                id: 2,
+                name: "رشاش زراعي 20 لتر",
+                price: 650,
+                category: "tools",
+                image: "https://source.unsplash.com/random/300x200/?sprayer"
+            },
+            {
+                id: 3,
+                name: "سماد NPK 19-19-19",
+                price: 850,
+                category: "fertilizers",
+                image: "https://source.unsplash.com/random/300x200/?fertilizer"
+            },
+            {
+                id: 4,
+                name: "جرار زراعي صغير",
+                price: 15000,
+                category: "machines",
+                image: "https://source.unsplash.com/random/300x200/?tractor"
+            },
+            {
+                id: 5,
+                name: "بذور ذرة هجين",
+                price: 150,
+                category: "seeds",
+                image: "https://source.unsplash.com/random/300x200/?corn,seed"
+            },
+            {
+                id: 6,
+                name: "مجرفة زراعية",
+                price: 75,
+                category: "tools",
+                image: "https://source.unsplash.com/random/300x200/?shovel"
+            }
+        ];
+
+        // متغيرات السلة 'all';
+
+        // عرض المتجر
+        function showMarketplace() {
+            document.getElementById('posts-container').style.display = 'none';
+            document.getElementById('marketplace-section').style.display = 'block';
+            
+            // تحديث القائمة النشطة
+            document.querySelectorAll('.nav-icon').forEach(icon => {
+                icon.classList.remove('active');
+            });
+            document.querySelector('.nav-icon:nth-child(3)').classList.add('active');
+            
+            // تحميل المنتجات
+            loadProducts();
+            
+            showToast("مرحباً بكم في متجر المزارعين");
+        }
+
+        // تحميل المنتجات
+        function loadProducts() {
+            const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = '';
+            
+            const filteredProducts = currentCategory === 'all' 
+                ? products 
+                : products.filter(p => p.category === currentCategory);
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" class="product-image" alt="${product.name}">
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <div class="product-price">${product.price} ج.م</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+                            <i class="fas fa-cart-plus"></i>
+                            أضف إلى السلة
+                        </button>
+                    </div>
+                `;
+                productGrid.appendChild(productCard);
+            });
+        }
+
+        // تصفية المنتجات حسب الفئة
+        function filterProducts(category) {
+            currentCategory = category;
+            
+            // تحديث أزرار الفئات
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // إعادة تحميل المنتجات
+            loadProducts();
+        }
+
+        // إضافة منتج إلى السلة
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            
+            // التحقق إذا كان المنتج موجوداً بالفعل في السلة
+            const existingItem = cartItems.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cartItems.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            // تحديث الإجمالي
+            cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            showToast(`${product.name} تمت إضافته إلى السلة`);
+            updateCartUI();
+        }
+
+        // تحديث واجهة السلة
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: #65676b;">سلة التسوق فارغة</p>';
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cartItems.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.style.display = 'flex';
+                    itemElement.style.justifyContent = 'space-between';
+                    itemElement.style.alignItems = 'center';
+                    itemElement.style.padding = '0.5rem 0';
+                    itemElement.style.borderBottom = '1px solid var(--border-color)';
+                    
+                    itemElement.innerHTML = `
+                        <div>
+                            <h4 style="margin: 0; font-size: 0.9rem;">${item.name}</h4>
+                            <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                                <button onclick="decreaseQuantity(${index})" style="background: var(--light-gray); border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;">-</button>
+                                <span>${item.quantity}</span>
+                                <button onclick="increaseQuantity(${index})" style="background: var(--light-gray); border: none; width: 25px; height: 25px; border-radius: 50%; cursor: pointer;">+</button>
+                                <span style="color: var(--primary-color); margin-right: 10px;">${item.price * item.quantity} ج.م</span>
+                            </div>
+                        </div>
+                        <button onclick="removeCartItem(${index})" style="background: none; border: none; color: #f02849; cursor: pointer;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    `;
+                    
+                    cartItemsContainer.appendChild(itemElement);
+                });
+            }
+            
+            document.getElementById('cartTotal').textContent = cartTotal + ' ج.م';
+        }
+
+        // زيادة كمية المنتج
+        function increaseQuantity(index) {
+            cartItems[index].quantity += 1;
+            cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+            updateCartUI();
+        }
+
+        // تقليل كمية المنتج
+        function decreaseQuantity(index) {
+            if (cartItems[index].quantity > 1) {
+                cartItems[index].quantity -= 1;
+            } else {
+                cartItems.splice(index, 1);
+            }
+            cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+            updateCartUI();
+        }
+
+        // إزالة منتج من السلة
+        function removeCartItem(index) {
+            cartItems.splice(index, 1);
+            cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+            updateCartUI();
+            showToast("تمت إزالة المنتج من السلة");
+        }
+
+        // فتح سلة التسوق
+        function openCart() {
+            updateCartUI();
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        // إتمام عملية الشراء
+        function checkout() {
+            if (cartItems.length === 0) {
+                showToast("سلة التسوق فارغة");
+                return;
+            }
+            
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                const purchasedItems = [...cartItems];
+                cartItems = [];
+                cartTotal = 0;
+                updateCartUI();
+                closeModal('cartModal');
+                
+                // يمكن هنا إضافة إرسال الطلب إلى الخادم
+                showToast(`تم اتمام الشراء بنجاح! ${purchasedItems.length} منتجات بقيمة ${cartTotal} ج.م`);
+            }, 2000);
+        }
+
+        // بقية الدوال تبقى كما هي...
+    </script>
+</body>
+</html>

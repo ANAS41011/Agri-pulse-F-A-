@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <!-- عشان الصفحة تعمل على كل الأجهزة -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن | منصة المزارعين</title>
+    <!-- خط عربي حلو اسمه "Cairo" -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <!-- استخدمنا bootstrap عشان التصميم يكون سهل ومرتب -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- أيقونات font-awesome عشان نضيف شكل حلو للأيقونات -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ستايل عام للصفحة */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* الهيدر بتاع الصفحة */
+        .header {
+            background-color: #28a745;
+            padding: 20px 0;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* روابط القائمة الرئيسية */
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: bold;
+            padding: 10px 15px;
+        }
+
+        /* لما يقف الفأرة على الرابط يغير لونه */
+        .navbar-nav .nav-link:hover {
+            color: #ffc107 !important;
+        }
+
+        /* الشعار بتاع الموقع */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* قسم "من نحن" */
+        .about {
+            padding: 70px 0;
+            background-color: #ffffff;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* عنوان القسم */
+        .about h2 {
+            font-size: 2.8rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* الفقرة اللي فيها شرح عن المنصة */
+        .about p {
+            font-size: 1.3rem;
+            color: #555;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        /* قسم الملخص اللي فيه النقاط المهمة */
+        .key-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        /* كل نقطة في الملخص */
+        .key-items .item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* لما يقف الفأرة على النقطة */
+        .key-items .item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* الأيقونات اللي داخل النقاط */
+        .key-items .item i {
+            font-size: 3rem;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        /* عناوين النقاط */
+        .key-items .item h4 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* النصوص اللي تحت العناوين */
+        .key-items .item p {
+            font-size: 1rem;
+            color: #777;
+        }
+
+        /* الفوتر بتاع الصفحة */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* النص اللي في الفوتر */
+        .footer p {
+            margin: 0;
+        }
+        
+        /* الأيقونات الاجتماعية في الفوتر */
+        .footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        /* لما يقف الفأرة على أيقونة الفيسبوك */
+        .footer .social-icons a[href*="facebook.com"]:hover {
+            color: #0026e1;
+        }
+        /* لما يقف الفأرة على أيقونة واتساب */
+        .footer .social-icons a:hover {
+            color: #20c100;
+        }
+
+
+        /* تحسينات للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            /* تصغير حجم العنوان لو الشاشة صغيرة */
+            .about h2 {
+                font-size: 2rem;
+            }
+
+            /* جعل النقاط تكون واحدة تحت الأخرى لو الشاشة صغيرة */
+            .key-items {
+                grid-template-columns: 1fr;
+            }
+
+            /* تصغير المسافة الداخلية للنقاط لو الشاشة صغيرة */
+            .key-items .item {
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header class="header sticky-top">
+        <div class="container">
+            <div class="logo">🌾 نبض الزراعة</div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="index.html">الرئيسية</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">الرئيسية</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="about-1.html">من نحن</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="services (1).html">الخدمات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Contact (1).html">تواصل معنا</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- قسم من نحن -->
+    <section class="about">
+        <div class="container">
+            <h2>من نحن</h2>
+            <p>منصة المزارعين هي منصة مبتكرة تهدف إلى تقديم حلول زراعية متكاملة للمزارعين في جميع أنحاء العالم العربي. نحن نقدم استشارات زراعية، تقنيات زراعية حديثة، ونظام سوق إلكتروني لتمكين المزارعين من تسويق منتجاتهم بكفاءة وفعالية.</p>
+
+            <h3 class="mt-5">نحن نقدم لك:</h3>
+            <div class="key-items">
+                <div class="item">
+                    <i class="fas fa-seedling"></i>
+                    <h4>حلول زراعية مبتكرة</h4>
+                    <p>استشارات زراعية متخصصة لمساعدة المزارعين على تحسين الإنتاجية وزيادة الكفاءة.</p>
+                </div>
+                <div class="item">
+                    <i class="fas fa-users"></i>
+                    <h4>دعم مستمر للمزارعين</h4>
+                    <p>نقدم خدمات دعم استشارية طوال العام لضمان نجاح كل موسم زراعي.</p>
+                </div>
+                <div class="item">
+                    <i class="fas fa-laptop-house"></i>
+                    <h4>تقنيات حديثة</h4>
+                    <p>استخدام أحدث الأدوات والتقنيات الزراعية لزيادة جودة المحاصيل وزيادة العائد.</p>
+                </div>
+                <div class="item">
+                    <i class="fas fa-store"></i>
+                    <h4>سوق إلكتروني</h4>
+                    <p>نوفر لك منصة رقمية لعرض وبيع المنتجات الزراعية بكل سهولة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 منصة المزارعين. جميع الحقوق محفوظة.</p>
+            <div class="social-icons">
+                <a href="https://wa.me/+201276351643" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/amin.ebrahim.31508/" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- إضافة جافا سكربت -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
